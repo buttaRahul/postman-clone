@@ -1,18 +1,22 @@
-import styled from "styled-components";
 import Header from "./Header";
-
-
-const StyledImage = styled.img`
-    width: 100px;
-    padding:5px;
-`;
+import From from "./Form";
+import { Box } from "@mui/material";
 
 const Home = () => {
   return (
-    <div>
-        <StyledImage src="https://mostlovedworkplace.com/wp-content/uploads/2021/09/pm-logo-horiz.png" alt="logo"/>
-    </div>
-  )
-}
+    <>
+      <Header />
+      <Box
+        sx={{
+          width:'60%',
+          margin:'20px auto 0 auto',
 
-export default Home
+        }}
+      >
+        <From />
+      </Box>
+    </>
+  );
+};
+
+export default Home;
