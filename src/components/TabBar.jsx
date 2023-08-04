@@ -1,6 +1,7 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import CreateTable from "./CreateTable";
+import CreateJsonText from "./CreateJsonText";
 
 const TabBar = () => {
   const [value, setValue] = useState(0);
@@ -66,7 +67,7 @@ const TabBar = () => {
         id={`simple-tabpanel-${2}`}
         aria-labelledby={`simple-tab-${2}`}
       >
-        {/* <CreateTable/> */}
+        <CreateJsonText/>
       </Box>
     </Box>
   );
