@@ -3,6 +3,7 @@ import From from "./Form";
 import { Box } from "@mui/material";
 import TabBar from "./TabBar";
 import Response from "./Response";
+import ErrorBox from "./ErrorBox";
 
 const Home = () => {
   return (
@@ -16,7 +17,9 @@ const Home = () => {
       >
         <From />
         <TabBar />
-        <Response/>
+        {/* <Response/> */}
+
+        <ErrorBox/>
       </Box>
     </>
   );
