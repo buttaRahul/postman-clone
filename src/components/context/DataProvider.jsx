@@ -1,27 +1,31 @@
-import { createContext, useState } from "react"
-
-
+import { createContext, useState } from "react";
 
 export const DataContext = createContext(null);
-const DataProvider = ({children}) => {
+const DataProvider = ({ children }) => {
+  const [formData, setFromData] = useState({
+    url: "",
+    type: "POST",
+  });
 
-    const [formData,setFromData] = useState({
-        url:'',
-        type:'POST',
-    });
-
-    // const [paramData,setParamData] = useState();
+  const [paramData, setParamData] = useState([]);
+  const [headerData, setHeaderData] = useState([]);
 
   return (
     <div>
-        <DataContext.Provider value={{
-            formData,
-            setFromData
-        }}>
-            {children}
-        </DataContext.Provider>
+      <DataContext.Provider
+        value={{
+          formData,
+          setFromData,
+          paramData,
+          setParamData,
+          headerData,
+          setHeaderData,
+        }}
+      >
+        {children}
+      </DataContext.Provider>
     </div>
-  )
-}
+  );
+};
 
 export default DataProvider;
