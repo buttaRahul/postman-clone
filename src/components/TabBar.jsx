@@ -1,5 +1,6 @@
 import { Box, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
+import CreateTable from "./CreateTable";
 
 const TabBar = () => {
   const [value, setValue] = useState(0);
@@ -12,7 +13,7 @@ const TabBar = () => {
     <Box
       sx={{
         marginTop: "20px",
-      }}
+      }} 
     >
       <Tabs
         value={value}
@@ -48,7 +49,8 @@ const TabBar = () => {
         id={`simple-tabpanel-${0}`}
         aria-labelledby={`simple-tab-${0}`}
       >
-        Params
+        <CreateTable text={"Query Param"}/>
+        
       </Box>
       <Box
         role="tabpanel"
@@ -56,7 +58,7 @@ const TabBar = () => {
         id={`simple-tabpanel-${1}`}
         aria-labelledby={`simple-tab-${1}`}
       >
-        Header
+        <CreateTable text={"Headers"}/>
       </Box>
       <Box
         role="tabpanel"
@@ -64,7 +66,7 @@ const TabBar = () => {
         id={`simple-tabpanel-${2}`}
         aria-labelledby={`simple-tab-${2}`}
       >
-        Body
+        {/* <CreateTable/> */}
       </Box>
     </Box>
   );
