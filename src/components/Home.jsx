@@ -1,6 +1,7 @@
 import Header from "./Header";
 import From from "./Form";
 import { Box } from "@mui/material";
+import TabBar from "./TabBar";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
         }}
       >
         <From />
+        <TabBar/>
       </Box>
     </>
   );
