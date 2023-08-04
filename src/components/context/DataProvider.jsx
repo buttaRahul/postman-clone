@@ -10,6 +10,8 @@ const DataProvider = ({children}) => {
         type:'POST',
     });
 
+    // const [paramData,setParamData] = useState();
+
   return (
     <div>
         <DataContext.Provider value={{

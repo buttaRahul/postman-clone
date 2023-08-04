@@ -1,6 +1,18 @@
 import { Checkbox, TableCell, TableRow, TextField } from "@mui/material";
+import { useState } from "react";
 
-const AddRow = () => {
+const AddRow = ({ addRows, rowId }) => {
+  const [status, setStauts] = useState(false);
+
+  const handleChange = (e) => {
+    if (!status) {
+      setStauts(true);
+      addRows((oldArr) => [...oldArr, rowId]);
+    } else {
+      setStauts(false);
+    }
+  };
+
   return (
     <TableRow>
       <TableCell
@@ -11,10 +23,12 @@ const AddRow = () => {
         }}
       >
         <Checkbox
+          checked={status}
           size="large"
           sx={{
             padding: ["2px 5px", "!important"],
           }}
+          onChange={(e) => handleChange(e)}
         />
       </TableCell>
       <TableCell

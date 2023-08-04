@@ -8,8 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import AddRow from "./AddRow";
+import { useState } from "react";
 
 const CreateTable = ({ text }) => {
+  const [rows, addRows] = useState([0]);
+
   return (
     <Box>
       <Typography mt={2} mb={2}>
@@ -52,7 +55,9 @@ const CreateTable = ({ text }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          <AddRow />
+          {rows.map((row, index) => (
+            <AddRow addRows={addRows} rwoId={index} key={index} />
+          ))}
         </TableBody>
       </Table>
     </Box>
