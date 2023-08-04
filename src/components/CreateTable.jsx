@@ -15,16 +15,44 @@ const CreateTable = ({ text }) => {
       <Typography mt={2} mb={2}>
         {text}
       </Typography>
-      <Table sx={{ minWidth: '100%' }} aria-label="simple table">
+      <Table
+        sx={{
+          minWidth: "100%",
+          border: "1px solid rgba(224,224,224,1)",
+        }}
+        aria-label="simple table"
+      >
         <TableHead>
           <TableRow>
-            <TableCell></TableCell>
-            <TableCell >KEY</TableCell>
-            <TableCell >VALUE</TableCell>
+            <TableCell
+              sx={{
+                border: "1px solid rgba(224,224,224,1)",
+                borderCollapse: "collapse",
+                padding: ["7px 5px", "!important"],
+              }}
+            ></TableCell>
+            <TableCell
+              sx={{
+                border: "1px solid rgba(224,224,224,1)",
+                borderCollapse: "collapse",
+                padding: ["7px 5px", "!important"],
+              }}
+            >
+              KEY
+            </TableCell>
+            <TableCell
+              sx={{
+                border: "1px solid rgba(224,224,224,1)",
+                borderCollapse: "collapse",
+                padding: ["7px 5px", "!important"],
+              }}
+            >
+              VALUE
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-            <AddRow/>
+          <AddRow />
         </TableBody>
       </Table>
     </Box>
