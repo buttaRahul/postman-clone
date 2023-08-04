@@ -6,6 +6,9 @@ import Response from "./Response";
 import ErrorBox from "./ErrorBox";
 
 const Home = () => {
+
+
+  
   return (
     <>
       <Header />
@@ -19,7 +22,7 @@ const Home = () => {
         <TabBar />
         {/* <Response/> */}
 
-        <ErrorBox/>
+        <ErrorBox />
       </Box>
     </>
   );
