@@ -1,5 +1,5 @@
 import Header from "./Header";
-import From from "./Form";
+import Form from "./Form";
 import { Box } from "@mui/material";
 import TabBar from "./TabBar";
 import Response from "./Response";
@@ -8,20 +8,37 @@ import { useContext, useState } from "react";
 import { DataContext } from "./context/DataProvider";
 import { checkParams } from "../utils/common-utils";
 import SnackBar from "./SnackBar";
+import { getData } from "../service/Api";
 
 const Home = () => {
+  const [error, setError] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [errorResponse, setErrorResponse] = useState(false);
+  const [apiResponse, setApiResponse] = useState({});
 
-  const [error, setError ] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  
-  const {formData, jsonText, parmData,headerData} = useContext(DataContext);
+  const {
+    formData,
+    jsonText,
+    parmData: paramData,
+    headerData,
+  } = useContext(DataContext);
 
-  const onSendClick = ()=>{
-      if(!checkParams(formData,jsonText,parmData,headerData,setErrorMsg)){
-        return false;
-      }
-  }
-  
+  const onSendClick = async () => {
+    if (!checkParams(formData, jsonText, paramData, headerData, setErrorMsg)) {
+      setError(true);
+      return false;
+    }
+
+    let response = await getData(formData, jsonText, paramData, headerData);
+
+    if (response === "error") {
+      setErrorResponse(true);
+      return;
+    }
+    setErrorResponse(false);
+    setApiResponse(response.data);
+  };
+
   return (
     <>
       <Header />
@@ -31,12 +48,15 @@ const Home = () => {
           margin: "20px auto 0 auto",
         }}
       >
-        <From onSendClick={onSendClick}/>
+        <Form onSendClick={onSendClick} />
         <TabBar />
         {/* <Response/> */}
 
-        <ErrorBox />
-        {error && <SnackBar error={error} setError={setError} errorMsg={errorMsg}/>}
+        {/* <ErrorBox /> */}
+        {errorResponse ? <ErrorBox /> : <Response data={apiResponse} />}
+        {error && (
+          <SnackBar errorMsg={errorMsg} error={error} setError={setError} />
+        )}
       </Box>
     </>
   );

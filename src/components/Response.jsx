@@ -1,6 +1,6 @@
 import { Box, TextareaAutosize, Typography } from "@mui/material";
 
-const Response = () => {
+const Response = ({data}) => {
 
 
     const textareaStyle  = {
@@ -15,6 +15,17 @@ const Response = () => {
       }
 
 
+    const obj = data;
+    let readableObj = '{\n';
+    for(let key in obj){
+      readableObj += '\t'
+      readableObj += (typeof obj[key] === 'string') ? `${key} : "${obj[key]}"` : `${key}:${obj[key]}`;
+      if(Object.keys(obj).pop() !== key.toString()){
+        readableObj += ',\n';
+      }
+    }
+    readableObj += '\n}';
+
 
   return (
     <Box>
@@ -24,6 +35,7 @@ const Response = () => {
                 maxRows={5}
                 style={textareaStyle}
                 disabled="disabled"
+                value={readableObj}
           />
     </Box>
   )

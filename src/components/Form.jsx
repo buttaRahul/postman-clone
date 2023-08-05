@@ -2,7 +2,7 @@ import { Box, Button, MenuItem, Select, TextField } from "@mui/material";
 import { useContext } from "react";
 import { DataContext } from "./context/DataProvider";
 
-const From = ({onSendClick}) => {
+const Form = ({ onSendClick }) => {
   const { formData, setFromData } = useContext(DataContext);
 
   const handleChange = (e) => {
@@ -50,8 +50,7 @@ const From = ({onSendClick}) => {
           height: "40px",
           marginLeft: "5px",
         }}
-
-        onClick={()=> onSendClick()}
+        onClick={() => onSendClick()}
       >
         Send
       </Button>
@@ -59,4 +58,4 @@ const From = ({onSendClick}) => {
   );
 };
 
-export default From;
+export default Form;

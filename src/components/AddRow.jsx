@@ -10,12 +10,12 @@ const AddRow = ({ addRows, rowId, data, setData }) => {
     if (!status) {
       setStauts(true);
       addRows((oldArr) => [...oldArr, rowId]);
-      result= {...result,check: true}
+      result= {...result,id:rowId,check: true}
     } else {
       setStauts(false);
-      result = {...result,check:false};
+      result = {...result,id:rowId,check:false};
     }
-
+    
     let index = data.findIndex((value) => value.id === Number(e.target.name));
 
     if (index === -1) {

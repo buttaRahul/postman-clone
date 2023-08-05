@@ -16,15 +16,33 @@ const checkValidJson = (text) => {
   }
 };
 
-export const checkParams = (formData, jsonText, paramData, headerData,setErrorMsg) => {
+export const checkParams = (
+  formData,
+  jsonText,
+  paramData,
+  headerData,
+  setErrorMsg
+) => {
   if (!formData.url) {
-    setErrorMsg("Reuqest URL is Missing")
+    setErrorMsg("Reuqest URL is Missing");
     return false;
   }
 
   if (!checkValidJson(jsonText)) {
-    setErrorMsg("Text is not a vaid Json")
+    setErrorMsg("Text is not a vaid Json");
     return false;
   }
   return true;
 };
+
+export const getHeadersAndParams = (objArr) => {
+  let obj = {};
+  if(!objArr) return obj
+  objArr.forEach(data => {
+      if (data.hasOwnProperty('check') && data.check) {
+          obj = { ...obj, [data.key]: data.value };
+      }
+  })
+  return obj;
+}
+
