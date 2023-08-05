@@ -7,11 +7,12 @@ import ErrorBox from "./ErrorBox";
 import { useContext, useState } from "react";
 import { DataContext } from "./context/DataProvider";
 import { checkParams } from "../utils/common-utils";
+import SnackBar from "./SnackBar";
 
 const Home = () => {
 
   const [error, setError ] = useState(false);
-  const [errorMsg, setErrorMsg] useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   
   const {formData, jsonText, parmData,headerData} = useContext(DataContext);
 
@@ -35,6 +36,7 @@ const Home = () => {
         {/* <Response/> */}
 
         <ErrorBox />
+        {error && <SnackBar error={error} setError={setError} errorMsg={errorMsg}/>}
       </Box>
     </>
   );
