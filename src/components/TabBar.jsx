@@ -1,10 +1,14 @@
 import { Box, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CreateTable from "./CreateTable";
 import CreateJsonText from "./CreateJsonText";
+import { DataContext } from "./context/DataProvider";
 
 const TabBar = () => {
   const [value, setValue] = useState(0);
+
+
+  const {paramData,setParamData,headerData,setHeaderData} = useContext(DataContext);
 
   const handleChange = (e, newValue) => {
     setValue(newValue);
@@ -50,7 +54,7 @@ const TabBar = () => {
         id={`simple-tabpanel-${0}`}
         aria-labelledby={`simple-tab-${0}`}
       >
-        <CreateTable text={"Query Param"}/>
+        <CreateTable text={"Query Params"} data={paramData} setData = {setParamData} />
         
       </Box>
       <Box
@@ -59,7 +63,7 @@ const TabBar = () => {
         id={`simple-tabpanel-${1}`}
         aria-labelledby={`simple-tab-${1}`}
       >
-        <CreateTable text={"Headers"}/>
+        <CreateTable text={"Headers"} data={headerData} setData={setHeaderData}/>
       </Box>
       <Box
         role="tabpanel"

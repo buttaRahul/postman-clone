@@ -10,7 +10,7 @@ import {
 import AddRow from "./AddRow";
 import { useState } from "react";
 
-const CreateTable = ({ text }) => {
+const CreateTable = ({ text, data, setData }) => {
   const [rows, addRows] = useState([0]);
 
   return (
@@ -56,7 +56,13 @@ const CreateTable = ({ text }) => {
         </TableHead>
         <TableBody>
           {rows.map((row, index) => (
-            <AddRow addRows={addRows} rwoId={index} key={index} />
+            <AddRow
+              addRows={addRows}
+              rwoId={index}
+              key={index}
+              data={data}
+              setData={setData}
+            />
           ))}
         </TableBody>
       </Table>
