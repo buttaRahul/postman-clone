@@ -9,6 +9,8 @@ const DataProvider = ({ children }) => {
 
   const [paramData, setParamData] = useState([]);
   const [headerData, setHeaderData] = useState([]);
+  const [jsonText,setJsonText] = useState('');
+  
 
   return (
     <div>
