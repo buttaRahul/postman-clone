@@ -2,6 +2,9 @@ import { createContext, useState } from "react";
 
 export const DataContext = createContext(null);
 const DataProvider = ({ children }) => {
+
+
+
   const [formData, setFromData] = useState({
     url: "",
     type: "POST",
@@ -10,7 +13,7 @@ const DataProvider = ({ children }) => {
   const [paramData, setParamData] = useState([]);
   const [headerData, setHeaderData] = useState([]);
   const [jsonText,setJsonText] = useState('');
-  
+
 
   return (
     <div>
@@ -18,6 +21,8 @@ const DataProvider = ({ children }) => {
         value={{
           formData,
           setFromData,
+          jsonText,
+          setJsonText,
           paramData,
           setParamData,
           headerData,
